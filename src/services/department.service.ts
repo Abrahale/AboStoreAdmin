@@ -12,6 +12,6 @@ export class DepartmentService {
     return this.http.get<any>(`${this.baseUrl}departments`);
   }
   AddNewDepartment(input:any){
-    return this.http.post<any>("http://localhost:3000/departments",input);
+    return this.http.post<any>(`${this.baseUrl}departments`,input);
   }
 }

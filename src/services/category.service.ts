@@ -12,6 +12,6 @@ export class CategoryService {
     return this.http.get<any>(`${this.baseUrl}categories`);
   }
   AddNewCategory(input:any){
-    return this.http.post<any>("http://localhost:3000/categories",input);
+    return this.http.post<any>(`${this.baseUrl}categories`,input);
   }
 }
