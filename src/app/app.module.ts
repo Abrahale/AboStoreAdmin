@@ -22,6 +22,8 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BaseStoreModule } from './store';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -33,7 +35,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAuQcXVDEaQWWIEnEl3GK_mXUzkldRVAoM'
-    })
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
+    BaseStoreModule
   ],
   declarations: [
     AppComponent,
