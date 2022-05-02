@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import Helpers from '../../helpers/helpers';
+import { BaseStoreState, UsersActions, UsersSelectors } from '../store';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  users=[];
+  users = [];
   showNewUserComponent:boolean = false;
   newUserForm:any;
-  constructor(private usersService: UsersService, private formBuilder:FormBuilder) {
+  constructor(private usersService: UsersService, private formBuilder:FormBuilder, private _store$:Store<BaseStoreState.State>) {
       this.newUserForm= new FormGroup({
         username: new FormControl('Abrahale',Validators.required),
         email: new FormControl('abrahale@gmail.com',[Validators.required, Validators.email]),
@@ -25,23 +27,33 @@ export class UsersComponent implements OnInit {
         about_me: new FormControl('Software developer'),
       })
    }
-  headers = ["Id","First Name", "Last Name", "Email", "User Name", "Created Date"];
+  headers = ["First Name", "Last Name", "Email", "User Name", "Created Date"];
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(res => {
-      console.log(res.result)
+     this._store$.select(UsersSelectors.selectData).subscribe(res =>{
+       if(res != null ){
       res.result.forEach(e => {
-        this.users.push({
-          email:e.email,
-          first_name:e.first_name,
-          last_name: e.last_name,
-          username: e.last_name,
-          created_date: e.createdDate,
-          id:e._id
-        })
-      });
-      console.log('the current data',this.users)
-    })
+            this.users.push({
+              first_name:e.first_name,
+              last_name: e.last_name,
+              email:e.email,
+              username: e.last_name,
+              created_date: e.createdDate,
+              })
+          });
+        }
+     });
+    this._store$.dispatch(new UsersActions.LoadRequestAction());
+    this.onChanges();
   }
+  onChanges(): void {
+    this.newUserForm.valueChanges.subscribe(val => {
+        this._store$.dispatch( new UsersActions.UpdateFormInput(this.newUserForm.getRawValue()))
+      });
+  }
+
+  // valueChanges(input){
+  //   console.log(input)
+  // }
 
   submitNewProfile(){
     console.log(this.newUserForm.getRawValue())
