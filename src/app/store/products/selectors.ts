@@ -5,6 +5,7 @@ import {
 } from '@ngrx/store';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
+import { BaseResponse } from 'src/app/models/baseResponse.model';
 
 export const getData = (state: State): any[] => state.data['result'];
 export const getError = (state: State): string => state.error;
@@ -12,7 +13,7 @@ export const getIsLoading = (state: State): boolean => state.isLoading;
 
 export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.PRODUCTS);
 
-export const selectData: MemoizedSelector<object, any[]> =
+export const selectData: MemoizedSelector<object, any> =
 createSelector(getState, getData);
 
 

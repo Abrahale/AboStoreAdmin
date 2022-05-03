@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ProductService } from '../../services/products.service';
+import { BaseStoreState, ProductsActions, ProductsSelectors } from '../store';
 
 @Component({
   selector: 'app-products',
@@ -10,7 +12,7 @@ import { ProductService } from '../../services/products.service';
 export class ProductsComponent implements OnInit {
   products=[];
   newProductsForm:any;
-  constructor(private productsService: ProductService, private formBuilder:FormBuilder) {
+  constructor(private productsService: ProductService, private formBuilder:FormBuilder, private _store$:Store<BaseStoreState.State>) {
     this.newProductsForm= new FormGroup({
       productCode: new FormControl('code'),
       title: new FormControl('',Validators.required),
@@ -27,18 +29,18 @@ export class ProductsComponent implements OnInit {
 headers = ["Id","First Name", "Last Name", "Email", "User Name", "Created Date"];
 
 ngOnInit(): void {
-  this.productsService.getAllProducts().subscribe(res => {
-    res.result.forEach(e => {
-      this.products.push({
-        title:e.title,
-        imagePath:e.imagePath,
-        sku: e.sku,
-        manufacturer: e.manufacturer,
-        available: e.available ? 'true' : false,
-        id:e._id
-      })
-    });
-  })
+  this._store$.select(ProductsSelectors.selectData).subscribe(res =>{
+    if(res != null ){
+      res.result.forEach(e => {
+         this.products.push({
+           id:e._id,
+           name: e.name,
+           description: e.description,
+           })
+       });
+     }
+  });
+  this._store$.dispatch(new ProductsActions.LoadRequestAction());
 }
   addNewProduct(){}
 }
