@@ -3,4 +3,5 @@ import * as BaseStoreState from './state';
 export * from './products'
 export * from './sign-in'
 export * from './users'
+export * from './department'
 export {BaseStoreModule, BaseStoreState};

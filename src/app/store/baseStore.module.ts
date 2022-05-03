@@ -4,6 +4,7 @@ import { StoreModule } from "@ngrx/store";
 import { SignInStoreModule } from "./sign-in/signInStore.module";
 import { ProductsStoreModule } from "./products";
 import { UsersStoreModule } from "./users";
+import { DepartmentStoreModule } from "./department";
 
 @NgModule({
   declarations:[],
@@ -11,6 +12,7 @@ import { UsersStoreModule } from "./users";
     SignInStoreModule,
     ProductsStoreModule,
     UsersStoreModule,
+    DepartmentStoreModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
   ],
