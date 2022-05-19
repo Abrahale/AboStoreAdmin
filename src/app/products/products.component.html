@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-primary d-flex">
                         <div class="">
-                            <h4 class="card-title ">Departments</h4>
+                            <h4 class="card-title ">Products</h4>
                             <p class="card-category"> This shows departments in the db</p>
                         </div>
                     </div>
@@ -19,11 +19,29 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Add New Department</h4>
+                        <h4 class="card-title">Add new Product</h4>
                         <p class="card-category">Complete the form</p>
                     </div>
                     <div class="card-body">
                         <form [formGroup]="newProductsForm">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field appearance="fill">
+                                <mat-label>Choose a Department</mat-label>
+                                  <mat-select formControlName="department">
+                                    <mat-option *ngFor="let dep of departments" [value]="dep.value"> {{dep.name}} </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field appearance="fill">
+                                <mat-label>Choose a Category</mat-label>
+                                  <mat-select formControlName="category">
+                                    <mat-option *ngFor="let cat of category" [value]="cat.value"> {{cat.name}} </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
                               <div class="row">
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
@@ -63,6 +81,19 @@
                                      <textarea matInput formControlName="description"></textarea>
                                    </mat-form-field>
                                 </div>
+                            </div>
+                            <div class="row">
+                              <label for="file">File</label>
+                              <input 
+                                  formControlName="file"
+                                  id="file" 
+                                  type="file" 
+                                  class="form-control"
+                                  multiple="" 
+                                  (change)="onFileChange($event)">
+                              <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                                  <div *ngIf="f.file.errors.required">File is required.</div>
+                              </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="addNewProduct()">Add new product</button>
                             <div class="clearfix"></div>

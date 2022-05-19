@@ -11,4 +11,7 @@ export class ProductService {
   getAllProducts(){
     return this.http.get<any>(`${this.baseUrl}products`);
   }
+  AddNewProduct(input:any){
+    return this.http.post<any>(`${this.baseUrl}products`,input);
+  }
 }

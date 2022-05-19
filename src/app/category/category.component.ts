@@ -31,7 +31,7 @@ export class CategoryComponent implements OnInit {
          });
        }
     });
-    this._store$.dispatch(new CategoryActions.LoadRequestAction());
+   
   }
 
   submitNewCategory(){

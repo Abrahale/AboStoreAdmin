@@ -31,7 +31,7 @@ export class DepartmentComponent implements OnInit {
            });
          }
       });
-      this._store$.dispatch(new DepartmentActions.LoadRequestAction());
+   
     }
   
     submitNewCategory(){
