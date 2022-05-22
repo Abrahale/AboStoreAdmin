@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gb": "ng build --prod --base-href \"https://abrahale.github.io/AboStoreAdmin/\" ",
+    "deploy": "npx angular-cli-ghpages --dir=dist/AboStoreAdmin"
+
   },
   "private": true,
   "dependencies": {
