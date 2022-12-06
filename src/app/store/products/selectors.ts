@@ -5,9 +5,8 @@ import {
 } from '@ngrx/store';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
-import { BaseResponse } from 'src/app/models/baseResponse.model';
 
-export const getData = (state: State): any[] => state.data['result'];
+export const getData = (state: State): any[] => state.products;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
 

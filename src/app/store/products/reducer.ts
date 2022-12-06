@@ -12,7 +12,7 @@ export function ProductsReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          data:action.payload.data,
+          products:action.payload,
           isLoading: false,
           error: null
         }

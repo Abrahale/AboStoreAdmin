@@ -15,7 +15,7 @@ export class ProductsEffects {
       featureActions.ActionTypes.LOAD_REQUEST,
     ),
     switchMap(action => this.productService.getAllProducts().pipe(
-      map(data => new featureActions.LoadSuccessAction({data}),
+      map(data => new featureActions.LoadSuccessAction(data),
         ),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
         ),

@@ -18,7 +18,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:{data: BaseResponse<any>}){}
+  constructor(public payload:any){}
 }
 
 export type Actions = LoadRequestAction | LoadFailureAction | LoadSuccessAction;

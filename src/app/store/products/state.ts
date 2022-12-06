@@ -1,15 +1,13 @@
 import { BaseResponse } from "src/app/models/baseResponse.model";
+import { product } from "src/models/products";
 
 export interface State{
-    data: BaseResponse<any>,
+    products: product[],
     isLoading: boolean,
     error: string
 }
 export const initialState: State = {
-  data: {
-    status:false,
-    payload:null
-  },
+  products: [], 
   isLoading: false,
   error: ""
 }
