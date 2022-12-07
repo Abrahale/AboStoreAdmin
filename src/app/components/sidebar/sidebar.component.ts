@@ -19,6 +19,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
     { path: '/upgrade', title: 'What\'s remaining',  icon:'unarchive', class: 'active-pro' },
+    { path: '/login', title: 'Login',  icon:'person', class: '' },
 ];
 
 @Component({

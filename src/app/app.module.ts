@@ -24,6 +24,7 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BaseStoreModule } from './store';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +44,7 @@ import { BaseStoreModule } from './store';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,        
+    AdminLayoutComponent,     
   ],
   providers: [],
   bootstrap: [AppComponent]
