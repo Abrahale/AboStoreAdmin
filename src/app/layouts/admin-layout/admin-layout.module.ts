@@ -23,7 +23,6 @@ import { DepartmentComponent } from '../../department/department.component';
 import { CategoryComponent } from '../../category/category.component';
 import { TableComponent } from '../../components/table/table.component';
 import { UsersService } from 'src/services/users.service';
-import { LoginComponent } from 'src/app/widgets/login/login.component';
 
 @NgModule({
   imports: [
@@ -52,8 +51,7 @@ import { LoginComponent } from 'src/app/widgets/login/login.component';
     DepartmentComponent,
     CategoryComponent,
     //Components within should be in their own module
-    TableComponent,
-    LoginComponent
+    TableComponent
     //
 
   ],

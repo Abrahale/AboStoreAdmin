@@ -20,10 +20,6 @@ export class NavbarComponent implements OnInit {
           this.sidebarVisible = false;
     }
 
-    clicked():void{
-        console.log('Click me clicked')
-    }
-
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;

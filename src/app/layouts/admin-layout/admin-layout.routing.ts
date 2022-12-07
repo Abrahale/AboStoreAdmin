@@ -12,7 +12,6 @@ import { UsersComponent } from '../../users/users.component';
 import { ProductsComponent } from '../../products/products.component';
 import { DepartmentComponent } from '../../department/department.component';
 import { CategoryComponent } from '../../category/category.component';
-import { LoginComponent } from 'src/app/widgets/login/login.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -69,5 +68,4 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'login',        component: LoginComponent },
 ];
